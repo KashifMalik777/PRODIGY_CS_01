@@ -52,10 +52,10 @@ A lightweight web application built with **Python**, **Flask**, and **Bootstrap*
     python3 -m venv venv
     ```
 
-4. Install the required Python packages:
+4. Install the required Python package:
 
     ```bash
-    pip install -r requirements.txt
+    pip install flask
     ```
 
 5. Run the Flask application:
@@ -103,7 +103,7 @@ Here’s a quick preview of the user interface:
 
 ## 🤝 Contributing
 
-If you'd like to contribute to this project, feel free to fork the repository, make your changes, and submit a pull request. We welcome all contributions!
+If you'd like to contribute to this project, feel free to fork the repository, make your changes, and submit a pull request. I welcome all contributions!
 
 ---
 
@@ -122,5 +122,5 @@ If you'd like to contribute to this project, feel free to fork the repository, m
 
 ## 💬 Questions or Feedback?
 
-Feel free to reach out via GitHub Issues or contact me directly at [your-email@example.com](mailto:your-email@example.com).
+Feel free to reach out via GitHub Issues or contact me directly at [md.kashif123490@gmail.com](mailto:your-email@example.com).
 
