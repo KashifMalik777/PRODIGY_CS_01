@@ -97,7 +97,7 @@ For decryption, the process is reversed using the correct key.
 
 Here’s a quick preview of the user interface:
 
-![Caesar Cipher Tool](demo-screenshot.png)
+![Caesar Cipher Tool](caeserciphertool.gif)
 
 ---
 
