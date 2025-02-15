@@ -3,44 +3,45 @@ import random
 
 app = Flask(__name__)
 
-def encrypt(text, key):
-
-    # Encrypts the given text using a Caesar Cipher.
-
+def encrypt(text, shift):
+    """
+    Encrypts the given text using a Caesar Cipher with the random shift.
+    """
     encrypted = ""
     for char in text:
         if char.isalpha():
             ascii_offset = 65 if char.isupper() else 97
-            encrypted += chr((ord(char) - ascii_offset + key) % 26 + ascii_offset)
+            encrypted += chr((ord(char) - ascii_offset + shift) % 26 + ascii_offset)
         else:
             encrypted += char
     return encrypted
 
-def decrypt(text, key):
-
-    # Decrypts the given text by reversing the Caesar Cipher.
-
-    return encrypt(text, -key)
+def decrypt(text, shift):
+    """
+    Decrypts the given text by reversing the Caesar Cipher shift.
+    """
+    return encrypt(text, -shift)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     result = None
-    key = None
+    shift = None
     if request.method == 'POST':
         mode = request.form.get('mode')
         message = request.form.get('message')
         
         if mode == 'encrypt':
-            key = random.randint(1, 25)  # Generate a random key for decryption
-            result = encrypt(message, key)
+            shift = random.randint(1, 25)  # Generate a random shift value
+            result = encrypt(message, shift)
         elif mode == 'decrypt':
             try:
-                key = int(request.form.get('key'))
-                result = decrypt(message, key)
+                shift = int(request.form.get('shift'))
+                result = decrypt(message, shift)
             except (ValueError, TypeError):
-                result = "Invalid Key for decryption."
+                result = "Invalid shift value for decryption."
     
-    return render_template('index.html', result=result, key=key)
+    return render_template('index.html', result=result, shift=shift, mode=request.form.get('mode'))
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
