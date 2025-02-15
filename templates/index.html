@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caesar Cipher Tool</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body { background-color: #f4f6f9; }
+    .container { margin-top: 50px; max-width: 600px; }
+    .card { border: none; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .card-header { background-color: #007bff; color: white; }
+    .btn-custom { background-color: #007bff; border-color: #007bff; }
+    .result-box { background-color: #e9ecef; padding: 15px; border-radius: 5px; margin-top: 20px; font-family: monospace; word-wrap: break-word; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header text-center">
+        <h3>Caesar Cipher Tool</h3>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="/">
+          <div class="form-group">
+            <label for="message">Enter your message:</label>
+            <textarea class="form-control" name="message" id="message" rows="3" placeholder="Type your message here..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Choose Operation:</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="mode" id="encrypt" value="encrypt" checked onclick="toggleShift(false)">
+              <label class="form-check-label" for="encrypt">Encrypt</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="mode" id="decrypt" value="decrypt" onclick="toggleShift(true)">
+              <label class="form-check-label" for="decrypt">Decrypt</label>
+            </div>
+          </div>
+          <div class="form-group" id="shift-group" style="display: none;">
+            <label for="shift">Decryption Key:</label>
+            <input type="number" class="form-control" name="shift" id="shift" placeholder="Enter decryption key">
+          </div>
+          <button type="submit" class="btn btn-custom btn-block">Submit</button>
+        </form>
+        
+        {% if result is not none %}
+        <div class="result-box mt-4">
+          <h5>Result:</h5>
+          <p>{{ result }}</p>
+          {% if shift is not none and request.form.get('mode') == 'encrypt' %}
+            <p><strong>Decryption Key:</strong> {{ shift }}</p>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggleShift(show) {
+      document.getElementById('shift-group').style.display = show ? 'block' : 'none';
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
