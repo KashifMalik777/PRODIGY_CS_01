@@ -37,7 +37,7 @@ A lightweight web application built with **Python**, **Flask**, and **Bootstrap*
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/caesar-cipher-tool.git
+    git clone https://github.com/KashifMalik777/PRODIGY_CS_01.git
     ```
 
 2. Navigate to the project directory:
