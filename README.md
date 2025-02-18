@@ -43,7 +43,7 @@ A lightweight web application built with **Python**, **Flask**, and **Bootstrap*
 2. Navigate to the project directory:
 
     ```bash
-    cd caesar-cipher-tool
+    cd PRODIGY_CS_01-main
     ```
 
 3. Create a virtual environment (optional, but recommended):
